@@ -9,7 +9,7 @@ bot.commands = new Discord.Collection();
 
 bot.on("message", async message => {
   if(message.author.bot) return;
-  if(message.channel.type === "dm") return message.channel.send("PLease use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
+  if(message.channel.type === "dm") return message.channel.send("Please use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
   
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
@@ -28,11 +28,18 @@ bot.on("message", async message => {
 //message.channel.send("This is the link to your avatar \n" + avatarURL);
 
  // }
-  if(cmd === `${prefix}report`) {
-    message.channel.send(args);
-    return;
-  }
-  
+if(cmd === `${prefix}say`) {
+    if(args.includes("@everyone")) {
+        
+        args.splice(/@everyone/g, "@everyoné");
+    }
+    if (args.includes("@here")) {
+        args.splice(/@here/g,"@heré");
+    }
+     message.channel.send(args);
+
+return;
+}
  if(cmd === `${prefix}gayrate` && args == "") {
     let randomnumber = Math.random();
     let gayrate = randomnumber.toString().slice([-2]);
