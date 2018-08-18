@@ -28,6 +28,11 @@ bot.on("message", async message => {
 //message.channel.send("This is the link to your avatar \n" + avatarURL);
 
  // }
+  if(cmd === `${prefix}report`) {
+    message.channel.send(args);
+    return;
+  }
+  
  if(cmd === `${prefix}gayrate` && args == "") {
     let randomnumber = Math.random();
     let gayrate = randomnumber.toString().slice([-2]);
