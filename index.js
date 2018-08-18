@@ -29,16 +29,16 @@ bot.on("message", async message => {
 
  // }
 if(cmd === `${prefix}say`) {
+    
     if(args.includes("@everyone")) {
-        
         args.splice(/@everyone/g, "@everyoné");
+        
     }
     if (args.includes("@here")) {
         args.splice(/@here/g,"@heré");
     }
-     message.channel.send(args);
-
-return;
+     let argsSay = args.join(" ");  
+    message.channel.send(argsSay);
 }
  if(cmd === `${prefix}gayrate` && args == "") {
     let randomnumber = Math.random();
