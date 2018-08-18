@@ -1,0 +1,24 @@
+{
+	"name": "ifergbot",
+	"version": "1.0.0",
+	"description": "bot",
+	"main": "index.js",
+	"dependencies": {
+		"async": "^2.6.1",
+		"discord.js": "^0.10.0"
+	},
+	"scripts": {
+		"start": "index.js"
+	},
+	"devDependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iHype/a-discord-bot.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/iHype/a-discord-bot/issues"
+	},
+	"homepage": "https://github.com/iHype/a-discord-bot#readme"
+}
