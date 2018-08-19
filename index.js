@@ -33,15 +33,22 @@ bot.on("message", async message => {
  // }
   
   if(cmd == `${prefix}translate`) {
+        if(translateArg.includes("@everyone")) {
+        translateArg.splice(/@everyone/g, "@everyoné");
+        
+    }
+    if (translateArg.includes("@here")) {
+        translateArg.splice(/@here/g,"@heré");
+    }
     translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
+      res.text.join(" ");
         message.channel.send(message.author + ": that translated =\n" + res.text);
-        //=> I speak English
     }).catch(err => {
         console.error(err);
     });
 }
   
- if(cmd === "<@478957124542529556>") {
+ if(cmd === "<@478957124542529556>" && args === "") {
      message.channel.send(message.author + "");
  }
 
