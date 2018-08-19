@@ -29,7 +29,7 @@ bot.on("message", async message => {
  // }
 
  if(cmd === "<@478957124542529556>") {
-     message.channel.send(message.author);
+     message.channel.send(message.author + "");
  }
 
  if(cmd === `${prefix}credits`) {
