@@ -7,7 +7,7 @@ const talkedRecently = new Set();
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
-
+bot.on("ready", async ready => {console.log("Bot ready");})
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return message.channel.send("Please use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
