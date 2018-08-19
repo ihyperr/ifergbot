@@ -102,6 +102,7 @@ if(cmd === `${prefix}say`) {
     message.channel.send(`<@${message.author.id}>, check your DM's`);
     let botembed = new Discord.RichEmbed()
     .setColor("#32b0ff")
+    .addField("`-say` `[arguments]`", "sends the message provided in [arguments]")
     .addField("`-help`", "shows this help message containing all commands\n")
     .addField("`-report` `@user` `reason`", "reports @user to the staff with reason provided (please provide proof within ur reason)\n")
     .addField("`-botinfo`", "shows bot info\n")
