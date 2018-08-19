@@ -1,5 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
+const translate = require('google-translate-api');
 const async = require("async");
 const fs = require("fs");
 const talkedRecently = new Set();
@@ -14,6 +15,9 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray['0'];
   let args = messageArray.slice(1);
+  let translateArg = args.slice(1) || messageArray.slice(2);
+  let tragetLanguage = args['0'] || messageArray['1'];
+  
 //  if(cmd === `${prefix}avatar`) {
   //	type "string";
 
@@ -27,7 +31,16 @@ bot.on("message", async message => {
 //message.channel.send("This is the link to your avatar \n" + avatarURL);
 
  // }
-
+  
+  if(cmd == `${prefix}translate`) {
+    translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
+        message.channel.send(message.author + ": that translated =\n" + res.text);
+        //=> I speak English
+    }).catch(err => {
+        console.error(err);
+    });
+}
+  
  if(cmd === "<@478957124542529556>") {
      message.channel.send(message.author + "");
  }
@@ -37,7 +50,7 @@ bot.on("message", async message => {
      .setTitle("Credits")
      .addField("Programmer and boss over the bot and (daddy :heart_eyes:) : ", "<@430447525800181762>")
      .addField("Brainstormer:", "<@!453970692266786816>")
-     .addField("Special thanks to:","<@356307333216993281>\n<@413079907669901313>\n<@299495028756054016>\n<@341602886935117835>\n<@415583155005685761>\n<@393412463153905675>\n<@437254213689540610>");
+     .addField("Special thanks to:","<@356307333216993281>\n<@413079907669901313>\n<@299495028756054016>\n<@341602886935117835>\n<@415583155005685761>\n<@393412463153905675>\n<@437254213689540610>\n<@326077902989033473>");
      message.channel.send(botembed);
  }
 if(cmd === `${prefix}say`) {
@@ -110,12 +123,13 @@ if(cmd === `${prefix}say`) {
     }, 6000);
     return;
  }
-  if(cmd == `${prefix}help`){
+ if(cmd == `${prefix}help`){
     let bicon = bot.displayAvatarURL;
     message.channel.send(`<@${message.author.id}>, check your DM's`);
     let botembed = new Discord.RichEmbed()
     .setColor("#32b0ff")
     .addField("`-help`", "shows this help message containing all commands\n")
+    .addField("`-translate` `target-language` `text to be translated`","\ntranslates `text to be translated` to `target-language` for example: `-translate` `nl` `Hello` this translates `Hello` to `nl` (nl = Dutch)\n")
     .addField("`-report` `@user` `reason`", "reports @user to the staff with reason provided (please provide proof within ur reason)\n")
     .addField("`-botinfo`", "shows bot info\n")
     .addField("`-streamtime`", "shows streamtime of iFerg\n")
