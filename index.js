@@ -97,8 +97,8 @@ if(cmd === `${prefix}say`) {
     .addField("Channel", message.channel)
     .addField("Time", message.createdAt)
     .setThumbnail(bicon);
+    message.author.sendMessage("This is a copy that has been sent to the staff team");
     message.author.sendMessage(reportEmber);
-
 
     let reportchannel = message.guild.channels.find("name", "spam");
     if(!reportchannel) return message.channel.reply("Channel for staff not found. Contact staff about this!");
