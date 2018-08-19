@@ -9,12 +9,11 @@ bot.commands = new Discord.Collection();
 
 bot.on("message", async message => {
   if(message.author.bot) return;
-  if(message.channel.type === "dm") return message.channel.send("Please use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
-  
+  if(message.channel.type === "dm") return message.send("Please use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray['0'];
-  let args = messageArray.slice(1)
+  let args = messageArray.slice(1);
 //  if(cmd === `${prefix}avatar`) {
   //	type "string";
 
@@ -28,6 +27,19 @@ bot.on("message", async message => {
 //message.channel.send("This is the link to your avatar \n" + avatarURL);
 
  // }
+
+ if(cmd === "<@478957124542529556>") {
+     message.channel.send(message.author + " no u");
+ }
+
+ if(cmd === `${prefix}credits`) {
+     let botembed = new Discord.RichEmbed()
+     .setTitle("Credits")
+     .addField("Programmer and boss over the bot and (daddy :heart_eyes:) : ", "<@430447525800181762>")
+     .addField("Brainstormer:", "<@!453970692266786816>")
+     .addField("Special thanks to:","<@356307333216993281>\n<@413079907669901313>\n<@299495028756054016>\n<@341602886935117835>\n<@415583155005685761>\n<@393412463153905675>\n<@437254213689540610>");
+     message.channel.send(botembed);
+ }
 if(cmd === `${prefix}say`) {
     
     if(args.includes("@everyone")) {
@@ -40,6 +52,7 @@ if(cmd === `${prefix}say`) {
      let argsSay = args.join(" ");  
     message.channel.send(argsSay);
 }
+
  if(cmd === `${prefix}gayrate` && args == "") {
     let randomnumber = Math.random();
     let gayrate = randomnumber.toString().slice([-2]);
@@ -77,7 +90,7 @@ if(cmd === `${prefix}say`) {
     let bicon = rUser.displayAvatarURL;
     let reportEmber = new Discord.RichEmbed()
     .setColor("#ff0000")
-    .setDescription("***REPORT***")
+    .setDescription("**REPORT**")
     .addField("Reported user:", `${rUser} with ID: ${rUser.id}`)
     .addField("Reported by:", `${message.author} with ID: ${message.author.id}`)
     .addField("Reason:", rReason)
@@ -97,21 +110,22 @@ if(cmd === `${prefix}say`) {
     }, 6000);
     return;
  }
- if(cmd == `${prefix}help`){
+  if(cmd == `${prefix}help`){
     let bicon = bot.displayAvatarURL;
     message.channel.send(`<@${message.author.id}>, check your DM's`);
     let botembed = new Discord.RichEmbed()
     .setColor("#32b0ff")
-    .addField("`-say` `[arguments]`", "sends the message provided in [arguments]")
     .addField("`-help`", "shows this help message containing all commands\n")
     .addField("`-report` `@user` `reason`", "reports @user to the staff with reason provided (please provide proof within ur reason)\n")
     .addField("`-botinfo`", "shows bot info\n")
     .addField("`-streamtime`", "shows streamtime of iFerg\n")
     .addField("`-gayrate [@user]`", "shows the gayrate of yourself or @user(@user is optional, leave it blank for your own gayrate)")
+    .addField("`-credits`","shows credits for the bot e.g. Creator(s)")
     .setThumbnail(bicon);
     message.author.sendMessage(botembed);
     return;
  }
+
 
 
  if(cmd == `${prefix}streamtime`) {
@@ -139,6 +153,8 @@ if(cmd === `${prefix}say`) {
     let botembed = new Discord.RichEmbed()
     .addField("Bot Information",
 "This is a bot coded in JS made for Ferg :slight_smile:")
+    .addField("How","Daddy Hyper came by mommy and he went a little too hard and I was created")
+    .addField("Commands","Use `-help` to get help with commands")
     .setColor("#15f153")
     .setThumbnail(bicon)
     .addField("Bot Name", bot.user.username)
