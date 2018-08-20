@@ -10,53 +10,34 @@ bot.commands = new Discord.Collection();
 bot.on("ready", async ready => {console.log("Bot ready");})
 bot.on("message", async message => {
   if(message.author.bot) return;
-  if(message.channel.type === "dm") return message.channel.send("Please use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
+  if(message.channel.type === "dm") return message.send("Please use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray['0'];
   let args = messageArray.slice(1);
   let translateArg = args.slice(1) || messageArray.slice(2);
   let tragetLanguage = args['0'] || messageArray['1'];
-  
-  
-//  if(cmd === `${prefix}avatar`) {
-  //	type "string";
 
-  //@readonly
+ 
 
+ if(cmd == `${prefix}setreportchannel`) {
+    if(!message.member.hasPermission("VIEW_AUDIT_LOG")) return message.channel.send(message.author + ": You can't do that! You are missing the permission:\nVIEW_AUDIT_LOG");
 
- // get() displayAvatarURL() {
-
-   // return this.avatarURL || this.defaultAvatarURL;
-//}
-//message.channel.send("This is the link to your avatar \n" + avatarURL);
-
- // }
-  global.reportschannel;
-  if(cmd == `${prefix}set-report-channel`) {
-    reportschannel = args["0"];
-    message.channel.send(message.author + ": the report channel has been set to " + reportschannel);
-    
-  }
-  
-  if(cmd == `${prefix}translate`) {
-        if(translateArg.includes("@everyone")) {
-        translateArg.splice(/@everyone/g, "@everyoné");
-        
-    }
-    if (translateArg.includes("@here")) {
-        translateArg.splice(/@here/g,"@heré");
-    }
+    global.reportschannel = args["0"];
+   message.channel.send(message.author + ": the report channel has been set to " + reportschannel);
+ }
+if(cmd == `${prefix}translate`) {
     translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
-      let resSplit = res.text.split(" ");
-        message.channel.send(message.author + ": that translated =\n" + resSplit);
+        message.channel.send(message.author + ": that translated =\n" + res.text);
+        //=> I speak English
     }).catch(err => {
         console.error(err);
     });
 }
-  
- if(cmd === "<@478957124542529556>" && args === "") {
-     message.channel.send(message.author + "");
+
+
+ if(cmd === "<@478957124542529556>") {
+     message.channel.send(message.author + " no u");
  }
 
  if(cmd === `${prefix}credits`) {
@@ -109,32 +90,37 @@ if(cmd === `${prefix}say`) {
 
 
 
- if(cmd === `${prefix}report`) {
-    if (talkedRecently.has(message.author.id)) return message.channel.send(message.author + ": You have to wait 1 minute between each report to file a new report");
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("Couldn't find user.");
-    let rReason  = args.join(" ").slice(22);
-    let bicon = rUser.displayAvatarURL;
-    let reportEmbed = new Discord.RichEmbed()
-    .setColor("#ff0000")
-    .setDescription("**REPORT**")
-    .addField("Reported user:", `${rUser} with ID: ${rUser.id}`)
-    .addField("Reported by:", `${message.author} with ID: ${message.author.id}`)
-    .addField("Reason:", rReason)
-    .addField("Channel", message.channel)
-    .addField("Time", message.createdAt)
-    .setThumbnail(bicon);
-    message.author.sendMessage("This is a copy that has been sent to the staff team");
-    message.author.sendMessage(reportEmbed);
-    message.delete().catch(O_o=>{});
-    reportschannel.channel.send(reportEmbed);
- }
+    if(cmd === `${prefix}report`) {
+        
+        if (talkedRecently.has(message.author.id)) return message.channel.send(message.author + ": You have to wait 1 minute between each report to file a new report");
+        let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+        if(!rUser) return message.channel.send("Couldn't find user.");
+        let rReason  = args.join(" ").slice(22);
+        let bicon = rUser.displayAvatarURL;
+        let reportEmbed = new Discord.RichEmbed()
+        .setColor("#ff0000")
+        .setDescription("**REPORT**")
+        .addField("Reported user:", `${rUser} with ID: ${rUser.id}`)
+        .addField("Reported by:", `${message.author} with ID: ${message.author.id}`)
+        .addField("Reason:", rReason)
+        .addField("Channel", message.channel)
+        .addField("Time", message.createdAt)
+        .setThumbnail(bicon);
+        message.author.send("This is a copy that has been sent to the staff team");
+        message.author.send(reportEmbed);
+        message.delete().catch(O_o=>{});
+        global.reportschannelID = reportschannel.slice(2, -1);
+        bot.channels.get(reportschannelID).send(reportEmbed);
+        }
+     
+
  if(cmd == `${prefix}help`){
     let bicon = bot.displayAvatarURL;
     message.channel.send(`<@${message.author.id}>, check your DM's`);
     let botembed = new Discord.RichEmbed()
     .setColor("#32b0ff")
     .addField("`-help`", "shows this help message containing all commands\n")
+    .addField("`-setreportchannel`","[requires permission: VIEW_AUDIT_LOG] sets the reports channel to `channel`")
     .addField("`-translate` `target-language` `text to be translated`","\ntranslates `text to be translated` to `target-language` for example: `-translate` `nl` `Hello` this translates `Hello` to `nl` (nl = Dutch)\n")
     .addField("`-report` `@user` `reason`", "reports @user to the staff with reason provided (please provide proof within ur reason)\n")
     .addField("`-botinfo`", "shows bot info\n")
@@ -145,7 +131,6 @@ if(cmd === `${prefix}say`) {
     message.author.sendMessage(botembed);
     return;
  }
-
 
 
  if(cmd == `${prefix}streamtime`) {
@@ -173,8 +158,7 @@ if(cmd === `${prefix}say`) {
     let botembed = new Discord.RichEmbed()
     .addField("Bot Information",
 "This is a bot coded in JS made for Ferg :slight_smile:")
-    .addField("How","Daddy Hyper came by mommy and he went a little too hard and I was created")
-    .addField("Commands","Use `-help` to get help with commands")
+    .addField("How","Daddy Hyper came by mommy and he went a little too hard and I existed")
     .setColor("#15f153")
     .setThumbnail(bicon)
     .addField("Bot Name", bot.user.username)
