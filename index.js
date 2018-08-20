@@ -41,8 +41,8 @@ bot.on("message", async message => {
         translateArg.splice(/@here/g,"@heré");
     }
     translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
-      res.text.join(" ");
-        message.channel.send(message.author + ": that translated =\n" + res.text);
+      let translatedMessage = res.text.join(" ");
+        message.channel.send(message.author + ": that translated =\n" + translatedMesaage);
     }).catch(err => {
         console.error(err);
     });
