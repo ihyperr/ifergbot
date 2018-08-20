@@ -32,10 +32,9 @@ bot.on("message", async message => {
 //message.channel.send("This is the link to your avatar \n" + avatarURL);
 
  // }
-  
+  var reportschannel;
   if(cmd == `${prefix}set-report-channel`) {
-    var reportschannel;
-     reportschannel = args["0"];
+    reportschannel = args["0"];
     message.channel.send(message.author + ": the report channel has been set to " + reportschannel);
     
   }
@@ -128,7 +127,7 @@ if(cmd === `${prefix}say`) {
     message.author.sendMessage("This is a copy that has been sent to the staff team");
     message.author.sendMessage(reportEmbed);
     message.delete().catch(O_o=>{});
-    reportschannel.send(reportEmbed);
+    reportschannel.channel.send(reportEmbed);
  }
  if(cmd == `${prefix}help`){
     let bicon = bot.displayAvatarURL;
