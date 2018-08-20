@@ -35,7 +35,7 @@ bot.on("message", async message => {
   
   if(cmd == `${prefix}set-report-channel`) {
      reportschannel = args["0"];
-    
+    message.channel.send(message.author + ": the report channel has been set to " + reportschannel);
     
   }
   
