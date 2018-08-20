@@ -17,6 +17,7 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
   let translateArg = args.slice(1) || messageArray.slice(2);
   let tragetLanguage = args['0'] || messageArray['1'];
+  var reportschannel;
   
 //  if(cmd === `${prefix}avatar`) {
   //	type "string";
@@ -31,6 +32,12 @@ bot.on("message", async message => {
 //message.channel.send("This is the link to your avatar \n" + avatarURL);
 
  // }
+  
+  if(cmd == `${prefix}set-report-channel`) {
+     reportschannel = args["0"];
+    
+    
+  }
   
   if(cmd == `${prefix}translate`) {
         if(translateArg.includes("@everyone")) {
@@ -102,7 +109,7 @@ if(cmd === `${prefix}say`) {
 
 
 
- if(cmd === `${prefix}report`) {
+ if(cmd === `${prefix}`) {
     if (talkedRecently.has(message.author.id)) return message.channel.send(message.author + ": You have to wait 1 minute between each report to file a new report");
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Couldn't find user.");
@@ -119,11 +126,8 @@ if(cmd === `${prefix}say`) {
     .setThumbnail(bicon);
     message.author.sendMessage("This is a copy that has been sent to the staff team");
     message.author.sendMessage(reportEmber);
-
-    let reportchannel = message.guild.channels.find("name", "spam");
-    if(!reportchannel) return message.channel.reply("Channel for staff not found. Contact staff about this!");
     message.delete().catch(O_o=>{});
-    reportchannel.send(reportEmber);
+    reportschannel.send(reportEmber);
     talkedRecently.add(message.author.id);
     setTimeout(() => {
         talkedRecently.delete(message.author.id);
