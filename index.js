@@ -40,6 +40,9 @@ bot.on("message", async message => {
     if (translateArg.includes("@here")) {
         translateArg.splice(/@here/g,"@heré");
     }
+    if (!tragetLanguage) {
+      return message.channel.send("'"tragetLanguage + "' is not a supported language");
+             }
     translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
         message.channel.send(message.author + ": that translated =\n" + res.text);
     }).catch(err => {
