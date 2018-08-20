@@ -17,7 +17,7 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
   let translateArg = args.slice(1) || messageArray.slice(2);
   let tragetLanguage = args['0'] || messageArray['1'];
-  var reportschannel;
+  
   
 //  if(cmd === `${prefix}avatar`) {
   //	type "string";
@@ -34,6 +34,7 @@ bot.on("message", async message => {
  // }
   
   if(cmd == `${prefix}set-report-channel`) {
+    var reportschannel;
      reportschannel = args["0"];
     message.channel.send(message.author + ": the report channel has been set to " + reportschannel);
     
@@ -109,13 +110,13 @@ if(cmd === `${prefix}say`) {
 
 
 
- if(cmd === `${prefix}`) {
+ if(cmd === `${prefix}report`) {
     if (talkedRecently.has(message.author.id)) return message.channel.send(message.author + ": You have to wait 1 minute between each report to file a new report");
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Couldn't find user.");
     let rReason  = args.join(" ").slice(22);
     let bicon = rUser.displayAvatarURL;
-    let reportEmber = new Discord.RichEmbed()
+    let reportEmbed = new Discord.RichEmbed()
     .setColor("#ff0000")
     .setDescription("**REPORT**")
     .addField("Reported user:", `${rUser} with ID: ${rUser.id}`)
@@ -125,14 +126,9 @@ if(cmd === `${prefix}say`) {
     .addField("Time", message.createdAt)
     .setThumbnail(bicon);
     message.author.sendMessage("This is a copy that has been sent to the staff team");
-    message.author.sendMessage(reportEmber);
+    message.author.sendMessage(reportEmbed);
     message.delete().catch(O_o=>{});
-    reportschannel.send(reportEmber);
-    talkedRecently.add(message.author.id);
-    setTimeout(() => {
-        talkedRecently.delete(message.author.id);
-    }, 6000);
-    return;
+    reportschannel.send(reportEmbed);
  }
  if(cmd == `${prefix}help`){
     let bicon = bot.displayAvatarURL;
