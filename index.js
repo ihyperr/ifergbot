@@ -32,8 +32,9 @@ bot.on("message", async message => {
 //message.channel.send("This is the link to your avatar \n" + avatarURL);
 
  // }
+  global.reportschannel;
   if(cmd == `${prefix}set-report-channel`) {
-    global.reportschannel = args["0"];
+    reportschannel = args["0"];
     message.channel.send(message.author + ": the report channel has been set to " + reportschannel);
     
   }
