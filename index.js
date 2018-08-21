@@ -77,7 +77,7 @@ var ABC = {
   
   
 
- if(cmd == `${prefix}setreportchannel`) {
+/* if(cmd == `${prefix}setreportchannel`) {
     if(!message.member.hasPermission("VIEW_AUDIT_LOG")) return message.channel.send(message.author + ": You can't do that! You are missing the permission:\nVIEW_AUDIT_LOG");
 
     global.reportschannel = args["0"];
@@ -95,7 +95,7 @@ if(cmd == `${prefix}translate`) {
  if(messageArray.includes("<@478957124542529556>")) {
      message.channel.send(message.author + " no u");
  }
-
+*/
  if(cmd === `${prefix}credits`) {
      let botembed = new Discord.RichEmbed()
      .setTitle("Credits")
