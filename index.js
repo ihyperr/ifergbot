@@ -10,7 +10,6 @@ bot.commands = new Discord.Collection();
 bot.on("ready", async ready => {console.log("Bot ready");})
 bot.on("message", async message => {
   if(message.author.bot) return;
-  message.channel.send(message.guild.id);
   if (message.startsWith(prefix)) {
   if(message.guild.id !== "282275654760660993" || message.guild.id !== "480854088876294144") return message.channel.send("You need to join FergFam or the support server in order to use this bot");
   }
