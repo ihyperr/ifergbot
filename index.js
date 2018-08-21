@@ -10,7 +10,7 @@ bot.commands = new Discord.Collection();
 bot.on("ready", async ready => {console.log("Bot ready");})
 bot.on("message", async message => {
   if(message.author.bot) return;
-  if(message.channel.type === "dm") return message.send("Please use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
+  if(message.channel.type === "dm") return message.channel.send("Please use a server which has this bot in order to use it.\nIf u can't find a server, here is a link to invite me:\nhttps://discordapp.com/api/oauth2/authorize?client_id=478957124542529556&permissions=0&scope=bot");
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray['0'];
@@ -19,6 +19,63 @@ bot.on("message", async message => {
   let tragetLanguage = args['0'] || messageArray['1'];
 
  
+  if (cmd === `${prefix}ban`) {
+  }
+  
+  
+  
+  if(cmd === `${prefix}texttobinary`) {
+var ABC = {
+  toAscii: function(bin) { 
+    
+  },
+  toBinary: function(str, spaceSeparatedOctets) {
+    return str.replace(/[\s\S]/g, function(str) {
+      str = ABC.zeroPad(str.charCodeAt().toString(2));
+      return !1 == spaceSeparatedOctets ? str : str + " "
+    })
+  },
+  zeroPad: function(num) {
+    return "00000000".slice(String(num).length) + num
+  }
+};
+
+ var textToBinary = ABC.toBinary(args.join(" "));
+        message.channel.send(message.author + ": that thranslated to binary is:");
+        message.channel.send(textToBinary);
+    
+};
+   if(cmd === `${prefix}binarytotext`) {
+  var ABC = {
+  toAscii: function(bin) {
+    return bin.replace(/\s*[01]{8}\s*/g, function(bin) {
+      return String.fromCharCode(parseInt(bin, 2))
+    })
+  },
+  toBinary: function(str, spaceSeparatedOctets) {
+    return str.replace(/[\s\S]/g, function(str) {
+      str = ABC.zeroPad(str.charCodeAt().toString(2));
+      return !1 == spaceSeparatedOctets ? str : str + " "
+    })
+  },
+  zeroPad: function(num) {
+    return "00000000".slice(String(num).length) + num
+  }
+};
+       if(args.includes("@everyone")) {
+        args.splice(/@everyone/g, "@everyoné");
+        
+    }
+    if (args.includes("@here")) {
+        args.splice(/@here/g,"@heré");
+    }
+ var binaryToText = ABC.toAscii(args.join(" "));
+        message.channel.send(message.author + ": that thranslated to normal text is:");
+        message.channel.send(binaryToText);
+   }
+  
+  
+  
 
  if(cmd == `${prefix}setreportchannel`) {
     if(!message.member.hasPermission("VIEW_AUDIT_LOG")) return message.channel.send(message.author + ": You can't do that! You are missing the permission:\nVIEW_AUDIT_LOG");
@@ -29,14 +86,13 @@ bot.on("message", async message => {
 if(cmd == `${prefix}translate`) {
     translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
         message.channel.send(message.author + ": that translated =\n" + res.text);
-        //=> I speak English
     }).catch(err => {
         console.error(err);
     });
 }
 
 
- if(cmd === "<@478957124542529556>") {
+ if(messageArray.includes("<@478957124542529556>")) {
      message.channel.send(message.author + " no u");
  }
 
@@ -90,9 +146,8 @@ if(cmd === `${prefix}say`) {
 
 
 
-    if(cmd === `${prefix}report`) {
-        
-        if (talkedRecently.has(message.author.id)) return message.channel.send(message.author + ": You have to wait 1 minute between each report to file a new report");
+        if(cmd === `${prefix}report`) {
+        if(reportschannel.guild !== message.channel.guild) return message.channel.send(message.author +  ": reports channel for this server not set, please use `-setreportschannel` `#channel` to set a reports channel");
         let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
         if(!rUser) return message.channel.send("Couldn't find user.");
         let rReason  = args.join(" ").slice(22);
