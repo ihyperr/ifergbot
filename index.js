@@ -10,7 +10,7 @@ bot.commands = new Discord.Collection();
 bot.on("ready", async ready => {console.log("Bot ready");})
 bot.on("message", async message => {
   if(message.author.bot) return;
-  if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\n discord.gg/fergfam");
+  if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\nhttps://www.discord.gg/fergfam");
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
   let cmd = messageArray['0'];
