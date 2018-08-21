@@ -9,7 +9,7 @@
 		"google-translate-api": "2.3.0"
 	},
 	"scripts": {
-		"start": "index.js"
+		"start": "node server.js"
 	},
 	"devDependencies": {},
 	"repository": {
