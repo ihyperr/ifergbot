@@ -125,7 +125,7 @@ if(cmd === `${prefix}say`) {
     }
     let userGayRate = message.author.username;
     let botembed = new Discord.RichEmbed()
-    .setTitle(userGayRate + "'s gayrate")
+    .setTitle("Gayrate machine")
     .setDescription(userGayRate + " is " + gayrate + "% gay");
 
     message.channel.send(botembed);
@@ -145,7 +145,7 @@ if(cmd === `${prefix}say`) {
     }
 
 
-
+/*
         if(cmd === `${prefix}report`) {
         if(reportschannel.guild !== message.channel.guild) return message.channel.send(message.author +  ": reports channel for this server not set, please use `-setreportschannel` `#channel` to set a reports channel");
         let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -167,7 +167,7 @@ if(cmd === `${prefix}say`) {
         global.reportschannelID = reportschannel.slice(2, -1);
         bot.channels.get(reportschannelID).send(reportEmbed);
         }
-     
+     */
 
  if(cmd == `${prefix}help`){
     let bicon = bot.displayAvatarURL;
@@ -175,9 +175,11 @@ if(cmd === `${prefix}say`) {
     let botembed = new Discord.RichEmbed()
     .setColor("#32b0ff")
     .addField("`-help`", "shows this help message containing all commands\n")
-    .addField("`-setreportchannel`","[requires permission: VIEW_AUDIT_LOG] sets the reports channel to `channel`")
+    .addField("`-binarytotext` `01110100 01100101 01111000 01110100`","tranlsates the binary provided into readable words/sentences")
+    .addField("`texttobinary` `text`","translates the provided text to binary")
+    //.addField("`-setreportchannel`","[requires permission: VIEW_AUDIT_LOG] sets the reports channel to `channel`")
     .addField("`-translate` `target-language` `text to be translated`","\ntranslates `text to be translated` to `target-language` for example: `-translate` `nl` `Hello` this translates `Hello` to `nl` (nl = Dutch)\n")
-    .addField("`-report` `@user` `reason`", "reports @user to the staff with reason provided (please provide proof within ur reason)\n")
+    //.addField("`-report` `@user` `reason`", "reports @user to the staff with reason provided (please provide proof within ur reason)\n")
     .addField("`-botinfo`", "shows bot info\n")
     .addField("`-streamtime`", "shows streamtime of iFerg\n")
     .addField("`-gayrate [@user]`", "shows the gayrate of yourself or @user(@user is optional, leave it blank for your own gayrate)")
