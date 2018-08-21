@@ -99,8 +99,8 @@ if(cmd == `${prefix}translate`) {
  if(cmd === `${prefix}credits`) {
      let botembed = new Discord.RichEmbed()
      .setTitle("Credits")
-     .addField("Programmer and boss over the bot and (daddy :heart_eyes:) : ", "<@430447525800181762>\n<@299495028756054016>")
-     .addField("Brainstormer:", "<@!453970692266786816>")
+     .addField("Programmer and boss over the bot (daddy :heart_eyes:) : ", "<@430447525800181762>")
+     .addField("Brainstormer:", "<@!453970692266786816>\n<@299495028756054016>")
      .addField("Special thanks to:","<@356307333216993281>\n<@413079907669901313>\n<@341602886935117835>\n<@415583155005685761>\n<@393412463153905675>\n<@437254213689540610>\n<@326077902989033473>");
      message.channel.send(botembed);
  }
