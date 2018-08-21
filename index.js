@@ -20,10 +20,23 @@ bot.on("message", async message => {
 
  
   if (cmd === `${prefix}ban`) {
+  //coming soon \0_0/
   }
-  
-  
-  
+  if(cmd === `${prefix}translate`) {        
+     if(translateArg.includes("@everyone")) {
+        translateArg.splice(/@everyone/g, "@everyoné");
+        
+    }
+    if (translateArg.includes("@here")) {
+        translateArg.splice(/@here/g,"@heré");
+    }
+  translate(translateArg, {to: tragetLanguage}).then(res => {
+
+    message.channel.send(message.author + ": that translates to:");
+    message.channel.send(res.text);
+}).catch(err => {
+    console.error
+  }}
   if(cmd === `${prefix}texttobinary`) {
 var ABC = {
   toAscii: function(bin) { 
