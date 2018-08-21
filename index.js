@@ -74,7 +74,10 @@ var ABC = {
         message.channel.send(binaryToText);
    }
   
+    if (messageArray.includes("<@481524871038369803>")) {
+  message.channel.send(message.author + " no u");
   
+  }
   
 
 /* if(cmd == `${prefix}setreportchannel`) {
