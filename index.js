@@ -19,24 +19,26 @@ bot.on("message", async message => {
   let tragetLanguage = args['0'] || messageArray['1'];
 
  
-  if (cmd === `${prefix}ban`) {
-  //coming soon \0_0/
-  }
-  if(cmd === `${prefix}translate`) {        
-     if(translateArg.includes("@everyone")) {
+ if (cmd == `${prefix}translate`) {
+          if(translateArg.includes("@everyone")) {
         translateArg.splice(/@everyone/g, "@everyoné");
         
     }
     if (translateArg.includes("@here")) {
         translateArg.splice(/@here/g,"@heré");
     }
-  translate(translateArg, {to: tragetLanguage}).then(res => {
-
+   
+     translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
     message.channel.send(message.author + ": that translates to:");
-    message.channel.send(res.text);
+       message.channel.send(res.text);
 }).catch(err => {
-    console.error
-  }}
+    console.error(err);
+});
+     
+     
+     
+     }
+         
   if(cmd === `${prefix}texttobinary`) {
 var ABC = {
   toAscii: function(bin) { 
@@ -95,7 +97,6 @@ var ABC = {
 
 /* if(cmd == `${prefix}setreportchannel`) {
     if(!message.member.hasPermission("VIEW_AUDIT_LOG")) return message.channel.send(message.author + ": You can't do that! You are missing the permission:\nVIEW_AUDIT_LOG");
-
     global.reportschannel = args["0"];
    message.channel.send(message.author + ": the report channel has been set to " + reportschannel);
  }
@@ -106,8 +107,6 @@ if(cmd == `${prefix}translate`) {
         console.error(err);
     });
 }
-
-
  if(messageArray.includes("<@478957124542529556>")) {
      message.channel.send(message.author + " no u");
  }
