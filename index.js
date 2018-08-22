@@ -9,7 +9,7 @@ bot.commands = new Discord.Collection();
 
 bot.on("ready", async ready => {
   console.log("Bot ready");
-  bot.user.setActivity('FergFam', { type: 'WATCHING' })
+  bot.user.setActivity('-help\nFergFam', { type: 'WATCHING' })
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
 })
 bot.on("message", async message => {
