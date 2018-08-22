@@ -182,6 +182,13 @@ if(cmd === `${prefix}say`) {
 }
 
  if(cmd === `${prefix}gayrate` && args == "") {
+     if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816") {
+     let botembed = new Discord.RichEmbed()
+    .setTitle("Gayrate machine")
+    .setDescription(message.author + " is 0% gay. Always");
+     return return message.channel.send(botembed);
+     }
+    message.channel.send(botembed);
     let randomnumber = Math.random();
     let gayrate = randomnumber.toString().slice([-2]);
     if (gayrate.startsWith("0")) {
@@ -195,6 +202,12 @@ if(cmd === `${prefix}say`) {
     message.channel.send(botembed);
  }
  if(cmd === `${prefix}gayrate`) {
+      if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816") {
+     let botembed = new Discord.RichEmbed()
+    .setTitle("Gayrate machine")
+    .setDescription(message.author + " is 0% gay. Always");
+     return message.channel.send(botembed);
+     }
     let gayrateUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if (!gayrateUser) return;
     let randomnumber = Math.random();
