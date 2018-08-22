@@ -34,7 +34,7 @@ bot.on("message", async message => {
   if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816"){
       var options = {
         files: './commandbans.txt',
-        from: /userToUnban/g,
+        from: userToUnban,
         to: '',
       };
       try {
