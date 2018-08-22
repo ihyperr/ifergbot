@@ -33,9 +33,8 @@ bot.on("message", async message => {
     }
    
      translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
-    message.channel.send(message.author + ": that translates to:");
-       message.channel.send(res.text);
-}).catch(err => {
+    message.channel.send(message.author + ": that translates to:\n" + res.text);
+     }).catch(err => {
     console.error(err);
 });
      
