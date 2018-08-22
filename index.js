@@ -120,7 +120,7 @@ if(cmd == `${prefix}translate`) {
      .setTitle("Credits")
      .addField("Programmer and boss over the bot: ", "<@430447525800181762>")
      .addField("Brainstormer:", "<@!453970692266786816>\n<@299495028756054016>")
-     .addField("Special thanks to:","<@356307333216993281>\n<@413079907669901313>\n<@341602886935117835>\n<@415583155005685761>\n<@393412463153905675>\n<@437254213689540610>\n<@326077902989033473>\n<@470877606175309834>");
+     .addField("Special thanks to:","<@356307333216993281>\n<@413079907669901313>\n<@341602886935117835>\n<@415583155005685761>\n<@393412463153905675>\n<@437254213689540610>\n<@326077902989033473>\n<@392235424413646848>");
      message.channel.send(botembed);
  }
 if(cmd === `${prefix}say`) {
@@ -232,9 +232,7 @@ if(cmd === `${prefix}say`) {
 
     let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
-    .addField("Bot Information",
-"This is a bot coded in JS made for Ferg :slight_smile:")
-    .addField("How","Daddy Hyper came by mommy and he went a little too hard and I existed")
+    .addField("Bot Information", "This is a bot coded in JS made for Ferg :slight_smile:")
     .setColor("#15f153")
     .setThumbnail(bicon)
     .addField("Bot Name", bot.user.username)
