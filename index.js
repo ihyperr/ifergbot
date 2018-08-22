@@ -28,14 +28,17 @@ bot.on("message", async message => {
 
 }
  
-  /*if (cmd == `${prefix}commandban`) {
+  if (cmd == `${prefix}commandban`) {
+  if (message.author.id !== "299495028756054016" || message.author.id !== "430447525800181762" || message.author.id !== "453970692266786816") {
+  return message.channel.send("You don't have the permission to command ban people.\nYou need to have the 'BAN_MEMBER' permission in the server in order to use this command");
+  }
   let userToBan = args['0']
   if(!userToBan) return message.channel.send("Couldn't find user.");
     try{
   fs.appendFile("./commandbans.txt", userToBan.id + "\n")
       message.channel.send("successfully added " + userToBan + "to the banned list.");
     }catch(err) {console.log(err)}
-  } */
+  } 
  if (cmd == `${prefix}translate`) {
           if(translateArg.includes("@everyone")) {
         translateArg.splice(/@everyone/g, "@everyoné");
