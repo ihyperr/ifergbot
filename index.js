@@ -28,14 +28,14 @@ bot.on("message", async message => {
 
 }
  
-  if (cmd == `${prefix}commandban`) {
+  /*if (cmd == `${prefix}commandban`) {
   let userToBan = args['0']
   if(!userToBan) return message.channel.send("Couldn't find user.");
     try{
   fs.appendFile("./commandbans.txt", userToBan.id + "\n")
       message.channel.send("successfully added " + userToBan + "to the banned list.");
     }catch(err) {console.log(err)}
-  }
+  } */
  if (cmd == `${prefix}translate`) {
           if(translateArg.includes("@everyone")) {
         translateArg.splice(/@everyone/g, "@everyoné");
