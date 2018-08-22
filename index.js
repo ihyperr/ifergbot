@@ -24,7 +24,7 @@ bot.on("message", async message => {
   let tragetLanguage = args['0'] || messageArray['1'];
   var commandbans = fs.readFileSync("./commandbans.txt", "utf-8");
   if(cmd.startsWith("-") && commandbans.includes(message.author)) {
-  return message.channel.send(message.author + ": you have been banned from using commands of this bot\nTo gain access back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Fer");
+  return message.channel.send(message.author + ": you have been banned from using commands of this bot\nTo gain access back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.");
 
 
 }
