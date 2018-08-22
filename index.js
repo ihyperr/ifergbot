@@ -182,7 +182,7 @@ if(cmd === `${prefix}say`) {
 }
 
  if(cmd === `${prefix}gayrate` && args == "") {
-     if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816") {
+     if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816" && args == "") {
      let botembed = new Discord.RichEmbed()
     .setTitle("Gayrate machine")
     .setDescription(message.author + " is 0% gay. Always");
