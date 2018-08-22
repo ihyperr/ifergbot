@@ -202,7 +202,7 @@ if(cmd === `${prefix}say`) {
     message.channel.send(botembed);
  }
  if(cmd === `${prefix}gayrate`) {
-      if (args == "<@299495028756054016>" || args == "<@430447525800181762>" || args == "<@453970692266786816") {
+      if (args == "<@299495028756054016>" || args == "<@430447525800181762>" || args == "<@453970692266786816>") {
      let botembed = new Discord.RichEmbed()
     .setTitle("Gayrate machine")
     .setDescription(args + " is 0% gay. Always");
