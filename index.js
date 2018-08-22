@@ -29,6 +29,14 @@ bot.on("message", async message => {
 
 }
   
+  if(cmd == `${prefix}mute`) {
+     
+     
+     return
+     }
+  
+  
+  
   
   if (cmd == `${prefix}banlist`) {
   let bannedUsers = commandbans.toString();
@@ -142,6 +150,11 @@ var ABC = {
   
   }
   
+  
+  if(`${prefix}ban` && message.author == "<@430447525800181762>") {
+   args.ban();
+    return;
+  }
 
 /* if(cmd == `${prefix}setreportchannel`) {
     if(!message.member.hasPermission("VIEW_AUDIT_LOG")) return message.channel.send(message.author + ": You can't do that! You are missing the permission:\nVIEW_AUDIT_LOG");
