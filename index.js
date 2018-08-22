@@ -152,7 +152,7 @@ var ABC = {
   
   
   if(`${prefix}ban` && message.author == "<@430447525800181762>") {
-   message.guild.member(args).ban();
+   message.guild.member(args).ban(args['1']);
     return;
   }
 
