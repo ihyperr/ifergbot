@@ -7,7 +7,11 @@ const talkedRecently = new Set();
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
-bot.on("ready", async ready => {console.log("Bot ready");})
+bot.on("ready", async ready => {
+  console.log("Bot ready");
+  bot.setActivity('FergFam', { type: 'WATCHING' })
+  .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
+})
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\nhttps://www.discord.gg/fergfam");
