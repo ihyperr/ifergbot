@@ -152,8 +152,12 @@ var ABC = {
   
   
   if(`${prefix}ban` && message.author == "<@430447525800181762>") {
-   message.guild.member(args).ban(args['1']);
+    try {
+    let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    console.log(bUser);
+    bUser.ban();
     return;
+    } catch(err){return console.error(err);}
   }
 
 /* if(cmd == `${prefix}setreportchannel`) {
