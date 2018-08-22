@@ -6,7 +6,8 @@
 	"dependencies": {
 		"async": "^2.6.1",
 		"discord.js": "11.4.2",
-		"google-translate-api": "2.3.0"
+		"google-translate-api": "2.3.0",
+		"replace-in-file": "3.4.2"
 	},
 	"scripts": {
 		"start": "node server.js"
