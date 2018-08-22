@@ -186,7 +186,7 @@ if(cmd === `${prefix}say`) {
      let botembed = new Discord.RichEmbed()
     .setTitle("Gayrate machine")
     .setDescription(message.author + " is 0% gay. Always");
-     return return message.channel.send(botembed);
+     return message.channel.send(botembed);
      }
     message.channel.send(botembed);
     let randomnumber = Math.random();
