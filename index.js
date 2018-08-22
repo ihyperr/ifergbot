@@ -21,8 +21,21 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
   let translateArg = args.slice(1) || messageArray.slice(2);
   let tragetLanguage = args['0'] || messageArray['1'];
+  var commandbans = fs.readFileSync("./commandbans.txt", "utf-8");
+  if(cmd.startsWith("-") && commandbans.includes(message.author.id)) {
+  return message.channel.send(message.author + ": you have been banned from using commands of this bot\nTo gain access back please DM <@430447525800181762>");
 
+
+}
  
+  if (cmd == `${prefix}commandban`) {
+  let userToBan = args['0']
+  if(!userToBan) return message.channel.send("Couldn't find user.");
+    try{
+  fs.appendFile("./commandbans.txt", userToBan.id + "\n")
+      message.channel.send("successfully added " + userToBan + "to the banned list.");
+    }catch(err) {console.log(err)}
+  }
  if (cmd == `${prefix}translate`) {
           if(translateArg.includes("@everyone")) {
         translateArg.splice(/@everyone/g, "@everyoné");
