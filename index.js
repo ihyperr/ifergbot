@@ -22,7 +22,7 @@ bot.on("message", async message => {
   let translateArg = args.slice(1) || messageArray.slice(2);
   let tragetLanguage = args['0'] || messageArray['1'];
   var commandbans = fs.readFileSync("./commandbans.txt", "utf-8");
-  if(cmd.startsWith("-") && commandbans.includes(message.author.id)) {
+  if(cmd.startsWith("-") && commandbans.includes(message.author)) {
   return message.channel.send(message.author + ": you have been banned from using commands of this bot\nTo gain access back please DM <@430447525800181762>");
 
 
@@ -33,9 +33,9 @@ bot.on("message", async message => {
   let userToBan = args['0']
   if(!userToBan) return message.channel.send("Couldn't find user.");
     try{
-  fs.appendFile("./commandbans.txt", userToBan.id + "\n")
+  fs.appendFile("./commandbans.txt", userToBan + "\n")
       message.channel.send("successfully added " + userToBan + "to the banned list.");
-    }catch(err) {console.log(err)}
+    }catch(err) {message.channel.send(err)}
   
   } else {return message.channel.send("No permission")}
 
