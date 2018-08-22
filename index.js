@@ -1,4 +1,5 @@
 const botconfig = require("./botconfig.json");
+const replace = require('replace-in-file');
 const Discord = require("discord.js");
 const translate = require('google-translate-api');
 const async = require("async");
@@ -28,13 +29,31 @@ bot.on("message", async message => {
 
 }
  
+  if(cmd == `${prefix}commandunban`) {
+   let userToUnban = args['0'];
+  if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816"){
+      var options = {
+        files: './commandbans.txt',
+        from: /userToUnban/g,
+        to: '',
+      };
+      try {
+        const changes = replace.sync(options);
+        message.channel.send('Successfully unbanned ' + userToUnban + " from using commands.");
+      }
+      catch (error) {
+        console.error('Error occurred:', error);
+      }
+  }else {return message.channel.send(message.channel.author + ": no premission");}
+  }
+  
   if (cmd == `${prefix}commandban`) {
   if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816") {
   let userToBan = args['0']
   if(!userToBan) return message.channel.send("Couldn't find user.");
     try{
   fs.appendFile("./commandbans.txt", userToBan + "\n")
-      message.channel.send("successfully added " + userToBan + "to the banned list.");
+      message.channel.send("Successfully added " + userToBan + "to the banned list.");
     }catch(err) {message.channel.send(err)}
   
   } else {return message.channel.send("No permission")}
