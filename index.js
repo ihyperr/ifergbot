@@ -30,8 +30,8 @@ bot.on("message", async message => {
 }
   
   if(cmd == `${prefix}voicemute` && message.author == "<@430447525800181762>") {
-     let mUser = args;
-     let mSet = args['1']
+     let mUser = args['0'];
+     let mSet = args['1'];
     mUser.setMute(mSet);
      
      return
