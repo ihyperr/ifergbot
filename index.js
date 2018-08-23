@@ -148,9 +148,13 @@ var ABC = {
         message.channel.send(binaryToText);
    }
   
-    if (cmd === "<@481524871038369803>") {
-  message.channel.send(message.author + " no u");
+    if (cmd === "<@481524871038369803>" && commandbans.includes(message.author)) {
+  return message.author.sendMessage(message.author + ": you have been banned from using commands of this bot\nTo gain access back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.");) {
   
+  
+  } else if (cmd == "<@481524871038369803>" && !commandbans.includes(message.author) {
+  	
+  	return message.channel.send(message.author + " no u");
   }
   
   
