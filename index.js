@@ -1,4 +1,5 @@
 const botconfig = require("./botconfig.json");
+const google = require("google");
 const replace = require('replace-in-file');
 const Discord = require("discord.js");
 const translate = require('google-translate-api');
@@ -29,7 +30,9 @@ bot.on("message", async message => {
   return message.author.send(message.author + ": you have been banned from using commands of this bot\nTo regain back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.")}}
 
   
-  
+
+
+
  if(cmd == `${prefix}unmute`){
       if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816" || message.author.hasPermission("KICK_MEMBERS")) {
   let muser =  message.mentions.members.first() || message.guild.members.get(args[0]);
