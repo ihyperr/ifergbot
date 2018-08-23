@@ -7,9 +7,9 @@
 		"async": "^2.6.1",
 		"discord.js": "11.4.2",
 		"google-translate-api": "2.3.0",
-		"replace-in-file": "3.4.2",
-		"ms": "2.1.1"
-	},
+    "replace-in-file": "3.4.2",
+    "google": "2.1.0"
+  },
 	"scripts": {
 		"start": "node server.js"
 	},
