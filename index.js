@@ -9,7 +9,7 @@ const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
 bot.on("ready", async ready => {
-  console.log("Bot ready");
+  console.log("Bot ready")//;
   bot.user.setActivity('-help\nFergFam', { type: 'WATCHING' })
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
 })
@@ -24,19 +24,20 @@ bot.on("message", async message => {
   let tragetLanguage = args['0'] || messageArray['1'];
   var commandbans = fs.readFileSync("./commandbans.txt", "utf-8");
   if(cmd.startsWith("-") && commandbans.includes(message.author)) {
-  return message.author.sendMessage(message.author + ": you have been banned from using commands of this bot\nTo gain access back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.");
+    return;
+    if(cmd == "<@481524871038369803>" && commandbans.includes(message.author)) {
+  return message.author.send(message.author + ": you have been banned from using commands of this bot\nTo regain back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.")}}
 
-
-}
   
-  if(cmd == `${prefix}voicemute` && message.author == "<@430447525800181762>") {
-     let mUser = args['0'];
-     let mSet = args['1'];
-    mUser.setMute(mSet);
-     
-     return
-     }
   
+ if(cmd == `${prefix}unmute`){
+      if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816" || message.author.hasPermission("KICK_MEMBERS")) {
+  let muser =  message.mentions.members.first() || message.guild.members.get(args[0]);
+        let unmrole = message.guild.roles.find('name', "muted");
+        muser.removeRole(unmrole);
+        message.delete();
+ } }
+    
   if(cmd == `${prefix}languagecodes`) {
     message.channel.send(message.author + ", check DM's");
     return message.author.sendMessage("Check https://cloud.google.com/translate/docs/languages for language codes.");
@@ -148,17 +149,48 @@ var ABC = {
  var binaryToText = ABC.toAscii(args.join(" "));
         message.channel.send(message.author + ": that thranslated to normal text is:");
         message.channel.send(binaryToText); }
+        
+          if(cmd == `${prefix}mute`) {
+    if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816" || message.author.hasPermission("KICK_MEMBERS")) {
+  let mUser =  message.mentions.members.first() || message.guild.members.get(args[0]);
+    if(!mUser) {return}
+  let muterole = message.guild.roles.find('name', "muted");
+      if(!muterole) {
+      try{
+        muterole = await message.guild.createRole({
+        name: "muted",
+        color: "#000000",
+        permissions:[]
+        })
+        message.guild.channels.forEach(async (channel, id) => {
+          await channel.overwritePermissions(muterole, {
+            SEND_MESSAGES: false,
+            ADD_REACTIONS: false
+          });
+        });
+      } catch(err) {console.log(err)}
+      }
+      let muteroleid = muterole.id;
+  await(mUser.addRole(muteroleid));
+      message.delete();
+  }}
 
-  /*
   
-  if(cmd == `${prefix}ban` && message.author == "<@430447525800181762>") {
+  if (cmd == "<@481524871038369803>" && !message.author.includes(commandbans)) {
+   return message.channel.send(message.author + " no u");
+    
+  }
+  
+  
+  /*if(cmd == `${prefix}ban` && message.author == "<@430447525800181762>") {
     try {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     console.log(bUser);
     bUser.ban();
+          message.delete().catch(O_o=>{});
     return;
     } catch(err){return console.error(err);}
-  } */
+  }*/
 
 /* if(cmd == `${prefix}setreportchannel`) {
     if(!message.member.hasPermission("VIEW_AUDIT_LOG")) return message.channel.send(message.author + ": You can't do that! You are missing the permission:\nVIEW_AUDIT_LOG");
@@ -172,7 +204,10 @@ if(cmd == `${prefix}translate`) {
         console.error(err);
     });
 }
-
+ if(messageArray.includes("<@478957124542529556>")) {
+     message.channel.send(message.author + " no u");
+ }
+*/
  if(cmd === `${prefix}credits`) {
      let botembed = new Discord.RichEmbed()
      .setTitle("Credits")
