@@ -116,6 +116,7 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
     let userNick = message.mentions.members.first();
 
     userNick.setNickname(translateArg.join(" ").toString())
+      message.delete();
   }}
   if(cmd === `${prefix}texttobinary`) {
 var ABC = {
