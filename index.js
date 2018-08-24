@@ -114,7 +114,7 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
   if(cmd === `${prefix}nick` && message.author.id == "430447525800181762") {
     let userNick = message.mentions.members.first();
 
-    userNick.setNickname(translateArg.toString())
+    userNick.setNickname(translateArg.join(" ").toString())
   }
   if(cmd === `${prefix}texttobinary`) {
 var ABC = {
