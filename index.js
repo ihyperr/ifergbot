@@ -26,8 +26,8 @@ bot.on("message", async message => {
   var commandbans = fs.readFileSync("./commandbans.txt", "utf-8");
   if(cmd.startsWith("-") && commandbans.includes(message.author)) {
       message.delete();
-      message.author.send(message.author + ": you have been banned from using commands of this bot\nTo regain back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.")}
-      return; 
+      message.author.send(message.author + ": you have been banned from using commands of this bot\nTo regain back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.");
+      return; }
     if(cmd == "<@481524871038369803>" && commandbans.includes(message.author)) {
  return; 
   }
