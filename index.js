@@ -117,7 +117,7 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
          
   
   if(cmd === `${prefix}logs` && message.author.id == "430447525800181762") {
-  const link = haste.post(logs).then(link => message.author.send(link));
+  const link = haste.post(logs).then(link => console.log(link));
   message.delete();
   }
   
