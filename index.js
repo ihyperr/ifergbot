@@ -353,7 +353,7 @@ if(cmd === `${prefix}say`) {
     .addField("`-translate` `target-language` `text to be translated`","\ntranslates `text to be translated` to `target-language` for example: `-translate` `nl` `Hello` this translates `Hello` to `nl` (nl = Dutch)\n")
     //.addField("`-report` `@user` `reason`", "reports @user to the staff with reason provided (please provide proof within ur reason)\n")
     .addField("`-botinfo`", "shows bot info\n")
-    .addField("`-streamtime`", "shows streamtime of iFerg\n")
+    //.addField("`-streamtime`", "shows streamtime of iFerg\n")
     .addField("`-gayrate [@user]`", "shows the gayrate of yourself or @user(@user is optional, leave it blank for your own gayrate)")
     .addField("`-credits`","shows credits for the bot e.g. Creator(s)")
     .setThumbnail(bicon);
@@ -361,7 +361,7 @@ if(cmd === `${prefix}say`) {
     return;
  }
 
-
+/*
  if(cmd == `${prefix}streamtime`) {
  	let bicon = bot.user.displayAvatarURL;
     let botembed = new Discord.RichEmbed()
@@ -379,7 +379,7 @@ if(cmd === `${prefix}say`) {
  	    .setColor("#15f153")
     .setThumbnail(bicon)
     message.channel.send(botembed);
- 	 }
+ 	 } */
  
   if(cmd === `${prefix}botinfo`) {
 
