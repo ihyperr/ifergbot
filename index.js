@@ -80,7 +80,9 @@ bot.on("message", async message => {
   if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816") {
   let userToBan = message.mentions.members.first();
   let userToBanID = userToBan.id;
-  if(!userToBan) return message.channel.send("Couldn't find user.");
+  if(!userToBan) {
+    return message.channel.send("Couldn't find user.");
+  }
     try{
   fs.appendFile("./commandbans.txt", userToBanID + "\n")
       message.channel.send("Successfully added " + userToBan + " to the banned list.");
