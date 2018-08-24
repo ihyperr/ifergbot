@@ -111,11 +111,12 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
      }
          
   
-  if(cmd === `${prefix}nick` && message.author.id == "430447525800181762") {
+  if(cmd === `${prefix}nick`) {
+    if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762"){
     let userNick = message.mentions.members.first();
 
     userNick.setNickname(translateArg.join(" ").toString())
-  }
+  }}
   if(cmd === `${prefix}texttobinary`) {
 var ABC = {
   toAscii: function(bin) { 
