@@ -18,6 +18,7 @@ bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\nhttps://www.discord.gg/fergfam");
   let prefix = botconfig.prefix;
+  if(message.guild.id == "282275654760660993") {return}
   let messageArray = message.content.split(" ");
   let cmd = messageArray['0'];
   let args = messageArray.slice(1);
