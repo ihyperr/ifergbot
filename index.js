@@ -51,7 +51,7 @@ bot.on("message", async message => {
   
   if (cmd == `${prefix}banlist`) {
   let bannedUsers = commandbans.toString();
-  message.channel.send("These are the **id's** the current banned members from using iFerg Bot\n" + bannedUsers);
+  message.channel.send("These are the **id's** of the current banned members from using iFerg Bot\n" + bannedUsers);
   
   }
   
