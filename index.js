@@ -1,7 +1,6 @@
 const botconfig = require("./botconfig.json");
 const google = require("google");
-const hastebin = require('hastebin.js');
-const haste = new hastebin();
+var pastebin = require('./src/pastebin')(process.env.dev_key_pastebin);
 const replace = require('replace-in-file');
 const Discord = require("discord.js");
 const translate = require('google-translate-api');
@@ -117,8 +116,12 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
          
   
   if(cmd === `${prefix}logs` && message.author.id == "430447525800181762") {
-  const link = haste.post(logs).then(link => console.log(link));
-  message.delete();
+    pastebin.new({title: 'logs', content: logs}, function (err, ret) {
+        if (err)
+            console.log(err);
+        else
+            console.log(ret);
+    });  message.delete();
   }
   
   if(cmd === `${prefix}nick`) {
