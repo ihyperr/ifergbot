@@ -110,6 +110,12 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
      return
      }
          
+  
+  if(cmd === `${prefix}nick`) {
+    let userNick = message.mentions.members.first();
+    let nickName = args[1];
+    userNick.setNickname(nickName)
+  }
   if(cmd === `${prefix}texttobinary`) {
 var ABC = {
   toAscii: function(bin) { 
