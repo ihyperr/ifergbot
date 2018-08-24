@@ -1,6 +1,7 @@
 const botconfig = require("./botconfig.json");
 const google = require("google");
-var pastebin = require('.log.txt')(process.env.dev_key_pastebin);
+var PastebinAPI = require('pastebin-js')
+pastebin = new PastebinAPI(process.env.dev_key_pastebin);
 const replace = require('replace-in-file');
 const Discord = require("discord.js");
 const translate = require('google-translate-api');
@@ -116,12 +117,17 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
          
   
   if(cmd === `${prefix}logs` && message.author.id == "430447525800181762") {
-    pastebin.new({title: 'logs', content: logs}, function (err, ret) {
-        if (err)
-            console.log(err);
-        else
-            console.log(ret);
-    });  message.delete();
+pastebin
+    .createPasteFromFile("./log.txt", "logs iferg bot", null, 1, "N")
+    .then(function (data) {
+        // we have succesfully pasted it. Data contains the id
+        message.author.send(data);
+    })
+    .fail(function (err) {
+        console.log(err);
+    });
+    });  
+  message.delete();
   }
   
   if(cmd === `${prefix}nick`) {
