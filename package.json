@@ -9,7 +9,7 @@
 		"google-translate-api": "2.3.0",
     		"replace-in-file": "3.4.2",
     		"google": "2.1.0",
-		"hastebin.js": "0.2.2"
+		"pastebin": "0.0.1"
   },
 	"scripts": {
 		"start": "node server.js"
