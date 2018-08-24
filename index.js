@@ -18,7 +18,7 @@ bot.on("ready", async ready => {
 })
 bot.on("message", async message => {
   var logs = fs.readFileSync("./log.txt", "utf-8");
-  fs.appendFile("./log.txt", message.author + " with username " + message.author.username + " just wrote a message:\n" + message + "\nin guild: " + message.guild.name + " in channel: " + message.channel + " with the name: #" + message.channel.name + "\n\n");
+  fs.appendFile("./log.txt", message.author + " with username " + message.author.username + " wrote a message at " + message.createdAt ":\n" + message + "\nin guild: " + message.guild.name + " in channel: " + message.channel + " with the name: #" + message.channel.name + "\n\n");
   if(message.author.bot) return;
   if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\nhttps://www.discord.gg/fergfam");
   let prefix = botconfig.prefix;
