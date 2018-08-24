@@ -24,7 +24,7 @@ bot.on("message", async message => {
   let translateArg = args.slice(1) || messageArray.slice(2);
   let tragetLanguage = args['0'] || messageArray['1'];
   var commandbans = fs.readFileSync("./commandbans.txt", "utf-8");
-  if(cmd.startsWith("-") && commandbans.includes(message.author)) {
+  if(cmd.startsWith("-") && commandbans.includes(message.author.id)) {
       message.delete();
       message.author.send(message.author + ": you have been banned from using commands of this bot\nTo regain back please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.");
       return; }
@@ -51,12 +51,13 @@ bot.on("message", async message => {
   
   if (cmd == `${prefix}banlist`) {
   let bannedUsers = commandbans.toString();
-  message.channel.send('These are the current banned members from using iFerg Bot\n' + bannedUsers);
+  message.channel.send("These are the **id's** the current banned members from using iFerg Bot\n" + bannedUsers);
   
   }
   
   if(cmd == `${prefix}commandunban`) {
-   let userToUnban = args['0'];
+   let userToUnban = message.guild.members.get(args[0]);
+    let usetounbanid = userToUnban.id;
   if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816"){
       var options = {
         files: './commandbans.txt',
@@ -77,9 +78,10 @@ bot.on("message", async message => {
   if (cmd == `${prefix}commandban`) {
   if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816") {
   let userToBan = args['0']
+  let userToBanID = userToBan.id;
   if(!userToBan) return message.channel.send("Couldn't find user.");
     try{
-  fs.appendFile("./commandbans.txt", userToBan + "\n")
+  fs.appendFile("./commandbans.txt", userToBanID + "\n")
       message.channel.send("Successfully added " + userToBan + " to the banned list.");
     }catch(err) {message.channel.send(err)}
   
