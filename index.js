@@ -231,6 +231,7 @@ if(cmd === `${prefix}say`) {
     }
      let argsSay = args.join(" ");  
     message.channel.send(argsSay);
+    console.log(message.author + " just made the bot say:\n" + argsSay);
 }
 
  if(cmd === `${prefix}gayrate` && args == "") {
