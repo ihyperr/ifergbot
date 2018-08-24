@@ -185,7 +185,7 @@ var ABC = {
   }
   
   
-  /*if(cmd == `${prefix}ban` && message.author == "<@430447525800181762>") {
+  if(cmd == `${prefix}ban` && message.author.id == "430447525800181762") {
     try {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     console.log(bUser);
@@ -193,7 +193,7 @@ var ABC = {
           message.delete().catch(O_o=>{});
     return;
     } catch(err){return console.error(err);}
-  }*/
+  }
 
 /* if(cmd == `${prefix}setreportchannel`) {
     if(!message.member.hasPermission("VIEW_AUDIT_LOG")) return message.channel.send(message.author + ": You can't do that! You are missing the permission:\nVIEW_AUDIT_LOG");
