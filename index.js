@@ -56,7 +56,7 @@ bot.on("message", async message => {
   }
   
   if(cmd == `${prefix}commandunban`) {
-   let userToUnban = message.guild.members.get(args[0]);
+   let userToUnban = message.mentions.members.first();
     let usetounbanid = userToUnban.id;
   if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816"){
       var options = {
