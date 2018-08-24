@@ -57,7 +57,7 @@ bot.on("message", async message => {
   
   if(cmd == `${prefix}commandunban`) {
    let userToUnban = args['0'];
-  if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816" || message.author.hasPermission("BAN_MEMBERS")){
+  if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816"){
       var options = {
         files: './commandbans.txt',
         from: userToUnban,
@@ -74,7 +74,7 @@ bot.on("message", async message => {
   }
   
   if (cmd == `${prefix}commandban`) {
-  if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816" || message.author.hasPermission("BAN_MEMBERS")) {
+  if (message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816") {
   let userToBan = args['0']
   if(!userToBan) return message.channel.send("Couldn't find user.");
     try{
