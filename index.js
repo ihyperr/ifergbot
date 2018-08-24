@@ -1,6 +1,6 @@
 const botconfig = require("./botconfig.json");
 const google = require("google");
-var pastebin = require('./src/pastebin')(process.env.dev_key_pastebin);
+var pastebin = require('.log.txt')(process.env.dev_key_pastebin);
 const replace = require('replace-in-file');
 const Discord = require("discord.js");
 const translate = require('google-translate-api');
