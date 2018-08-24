@@ -1,5 +1,7 @@
 const botconfig = require("./botconfig.json");
 const google = require("google");
+const hastebin = require('hastebin.js');
+const haste = new hastebin();
 const replace = require('replace-in-file');
 const Discord = require("discord.js");
 const translate = require('google-translate-api');
@@ -15,7 +17,8 @@ bot.on("ready", async ready => {
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
 })
 bot.on("message", async message => {
-  console.log(message.author + " with username " + message.author.username + " just wrote a message:\n" + message + "\nin guild: " + message.guild.name + " in channel: " + message.channel + " with the name: #" + message.channel.name + "\n\n");
+  var logs = fs.readFileSync("./log.txt", "utf-8");
+  fs.appendFile("./log.txt", message.author + " with username " + message.author.username + " just wrote a message:\n" + message + "\nin guild: " + message.guild.name + " in channel: " + message.channel + " with the name: #" + message.channel.name + "\n\n");
   if(message.author.bot) return;
   if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\nhttps://www.discord.gg/fergfam");
   let prefix = botconfig.prefix;
@@ -112,6 +115,11 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
      return
      }
          
+  
+  if(cmd === `${prefix}logs` && message.author.id == "430447525800181762") {
+  const link = haste.post(logs).then(link => message.author.send(link));
+  message.delete();
+  }
   
   if(cmd === `${prefix}nick`) {
     if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762"){
