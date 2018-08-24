@@ -65,7 +65,8 @@ bot.on("message", async message => {
       };
       try {
         const changes = replace.sync(options);
-        message.channel.send('Successfully unbanned ' + userToUnban + " from using commands.");
+        let unbanConfirm = message.channel.send('Successfully unbanned ' + userToUnban + " from using commands.");
+        unbanConfirm.delete(3000);
       }
       catch (error) {
         console.error('Error occurred:', error);
