@@ -57,11 +57,11 @@ bot.on("message", async message => {
   
   if(cmd == `${prefix}commandunban`) {
    let userToUnban = message.mentions.members.first();
-    let usetounbanid = userToUnban.id;
+    let usertounbanid = userToUnban.id;
   if(message.author.id == "299495028756054016" || message.author.id == "430447525800181762" || message.author.id == "453970692266786816"){
       var options = {
         files: './commandbans.txt',
-        from: userToUnban,
+        from: usertounbanid,
         to: '',
       };
       try {
