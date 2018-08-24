@@ -15,7 +15,7 @@ bot.on("ready", async ready => {
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
 })
 bot.on("message", async message => {
-  console.log(message.author + " with username " + message.author.username + " just wrote a message:\n" + message + "\nin guild: " + message.guild.name + " in channel: " + message.channel + " with the name: #" + message.channel.name);
+  console.log(message.author + " with username " + message.author.username + " just wrote a message:\n" + message + "\nin guild: " + message.guild.name + " in channel: " + message.channel + " with the name: #" + message.channel.name + "\n\n");
   if(message.author.bot) return;
   if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\nhttps://www.discord.gg/fergfam");
   let prefix = botconfig.prefix;
