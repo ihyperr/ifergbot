@@ -18,7 +18,6 @@ bot.on("ready", async ready => {
 })
 bot.on("message", async message => {
   var logs = fs.readFileSync("./log.txt", "utf-8");
-  fs.appendFile("./log.txt", message.author + " with username " + message.author.username + " wrote a message at " + message.createdAt +  ":\n" + message + "\nin guild: " + message.guild.name + " in channel: " + message.channel + " with the name: #" + message.channel.name + "\n\n");
   if(message.author.bot) return;
   if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\nhttps://www.discord.gg/fergfam");
   let prefix = botconfig.prefix;
@@ -28,6 +27,7 @@ bot.on("message", async message => {
   let translateArg = args.slice(1) || messageArray.slice(2);
   let tragetLanguage = args['0'] || messageArray['1'];
   var commandbans = fs.readFileSync("./commandbans.txt", "utf-8");
+  fs.appendFile("./log.txt", message.author + " with username " + message.author.username + " wrote a message at " + message.createdAt +  ":\n" + message + "\nin guild: " + message.guild.name + " in channel: " + message.channel + " with the name: #" + message.channel.name + "\n\n");
   if(cmd.startsWith("-") && commandbans.includes(message.author.id)) {
       message.delete();
       message.author.send(message.author + ": you have been banned from using commands of this bot\nTo regain access please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.");
