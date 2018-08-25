@@ -216,7 +216,7 @@ var ABC = {
     if(cmd == `${prefix}unban` && message.author.id == "430447525800181762") {
     try {
     let ubUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    console.log(bUser);
+    console.log(ubUser);
     ubUser.unban();
           message.delete().catch(O_o=>{});
     return;
