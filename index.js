@@ -113,6 +113,7 @@ translate(translateArg + "", {to: tragetLanguage + ""}).then(res => {
      }
          
   
+  
   if(cmd === `${prefix}logs` && message.author.id == "430447525800181762") {
 pastebin
     .createPasteFromFile("./log.txt", "logs iferg bot", null, 1, "N")
