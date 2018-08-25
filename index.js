@@ -217,7 +217,7 @@ var ABC = {
     try {
     let ubUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     console.log(ubUser);
-    ubUser.unban();
+    message.guild.unban(ubUser);
           message.delete().catch(O_o=>{});
     return;
     } catch(err){return console.error(err);}
