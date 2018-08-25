@@ -213,6 +213,15 @@ var ABC = {
     
   }
   
+    if(cmd == `${prefix}unban` && message.author.id == "430447525800181762") {
+    try {
+    let ubUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    console.log(bUser);
+    bUser.unban();
+          message.delete().catch(O_o=>{});
+    return;
+    } catch(err){return console.error(err);}
+  }
   
   if(cmd == `${prefix}ban` && message.author.id == "430447525800181762") {
     try {
