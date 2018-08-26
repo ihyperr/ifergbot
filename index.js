@@ -11,6 +11,7 @@ const talkedRecently = new Set();
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
+
 bot.on("ready", async ready => {
   console.log("Bot ready")//;
   bot.user.setActivity('-help\nFergFam', { type: 'WATCHING' })
