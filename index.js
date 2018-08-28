@@ -211,9 +211,8 @@ var ABC = {
   }}
 
   
-  if (cmd == "<@481524871038369803>" && !message.author.includes(commandbans)) {
+  if (cmd == "<@481524871038369803>") {
    return message.channel.send(message.author + " no u");
-    
   }
   
     if(cmd == `${prefix}unban` && message.author.id == "430447525800181762") {
