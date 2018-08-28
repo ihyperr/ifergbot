@@ -208,7 +208,7 @@ var ABC = {
   }}
 
   
-  if (cmd == "<@481524871038369803>") {
+  if (cmd == "<@481524871038369803>" || cmd == "<@!481524871038369803>") {
    return message.channel.send(message.author + " no u");
   }
   
