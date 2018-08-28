@@ -17,7 +17,8 @@ bot.on("ready", async ready => {
   bot.user.setActivity('-help\nFergFam', { type: 'WATCHING' })
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
 })
-bot.on("message", async message => {
+bot.on("message", async msg => {
+  var message = msg.content.toLowerCase();
   var logs = fs.readFileSync("./log.txt", "utf-8");
   if(message.author.bot) return;
   if(message.channel.type === "dm") return message.channel.send("DM commands do not work, to use my bot please join the FergFam to use it\nhttps://www.discord.gg/fergfam");
