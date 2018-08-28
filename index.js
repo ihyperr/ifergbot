@@ -33,9 +33,6 @@ bot.on("message", async message => {
       message.delete();
       message.author.send(message.author + ": you have been banned from using commands of this bot\nTo regain access please DM <@430447525800181762>, <@299495028756054016>, <@453970692266786816> or any of the Mods/Admins of Ferg.");
       return; }
-    if(cmd == "<@481524871038369803>" && commandbans.includes(message.author)) {
- return; 
-  }
   
   
 
